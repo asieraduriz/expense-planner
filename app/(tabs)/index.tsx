@@ -1,28 +1,34 @@
-import { StyleSheet } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { Button, Pressable, StyleSheet } from "react-native";
+import { Text, TextInput, View } from "@/components/Themed";
 
 export default () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <TextInput placeholder="Subscription name" />
+      <TextInput placeholder="Subscription cost + currency" />
+      <TextInput placeholder="Frecuency picker" />
+      <TextInput placeholder="Notes" />
+      <Button title="Add" />
+      <Pressable>
+        <Text>Add</Text>
+      </Pressable>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
 });
