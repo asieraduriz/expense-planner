@@ -9,7 +9,7 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome>["nam
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
-export default function TabLayout() {
+export default () => {
   const colorScheme = useColorScheme();
 
   return (
@@ -41,4 +41,4 @@ export default function TabLayout() {
       />
     </Tabs>
   );
-}
+};
