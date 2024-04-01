@@ -1,6 +1,6 @@
 import { View } from "@/components/Themed";
 import { useLocalSearchParams } from "expo-router"
-import type { Subscription } from '@/types'
+import { Subscription } from '@/types'
 import { StyleSheet } from "react-native";
 import { useSubscription, useUpdateSubscription } from "@/components/contexts";
 import { SubscriptionForm } from "@/components/forms";
