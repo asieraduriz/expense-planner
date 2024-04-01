@@ -3,7 +3,7 @@ import { useLocalSearchParams } from "expo-router"
 import type { Subscription } from '@/types'
 import { StyleSheet } from "react-native";
 import { useSubscription, useUpdateSubscription } from "@/components/contexts";
-import { SubscriptionForm } from "@/components/subscriptions";
+import { SubscriptionForm } from "@/components/forms";
 
 export default () => {
     const { subscriptionId } = useLocalSearchParams<{ subscriptionId: Subscription["id"] }>();

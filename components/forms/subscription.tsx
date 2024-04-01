@@ -59,8 +59,7 @@ export const SubscriptionForm = ({ initial, onSubmit }: Props) => {
                 }
             }} />
             <TextInput placeholder="Notes" value={notes} onChangeText={setNotes} />
-            <Button title="Add" onPress={() => onPressAdd()} />
-            <Pressable onPress={() => onPressAdd()}>
+            <Pressable onPress={() => onPressAdd()} >
                 <Text>Add</Text>
             </Pressable>
         </View>

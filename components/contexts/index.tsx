@@ -74,6 +74,7 @@ export const useSubscription = (id: Subscription["id"]) => {
     if (context === undefined) throw new Error("useSubscription must be used within Provider");
 
     const subscription = context.subscriptions.find((subscription) => subscription.id === id);
+    if (!subscription) throw new Error(`Subscription ${id} not found`);
     return subscription;
 }
 

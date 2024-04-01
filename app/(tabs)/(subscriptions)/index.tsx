@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Subscription } from "@/types";
 import { uuid } from "@/helpers";
 import { useAddSubscription } from "@/components/contexts";
-import { SubscriptionForm } from "@/components/subscriptions";
+import { SubscriptionForm } from "@/components/forms";
 
 export default () => {
     const [id] = useState(uuid());
