@@ -1,18 +1,39 @@
-import { Button, Pressable, StyleSheet } from "react-native";
+import { Alert, Button, Pressable, StyleSheet } from "react-native";
 import { Text, TextInput, View } from "@/components/Themed";
 import { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 import { Currencies, Subscription } from "@/types";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { uuid } from "@/helpers";
+import { useAddSubscription } from "@/components/contexts";
 
 export default () => {
   const [name, setName] = useState<Subscription["name"]>("");
   const [cost, setCost] = useState<Subscription["cost"]>("");
-  const [currency, setCurrency] = useState<Subscription["currency"]>();
+  const [currency, setCurrency] = useState<Subscription["currency"]>("€");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState<Subscription["startDate"]>(new Date());
   const [everyWeeks, setEveryWeeks] = useState<Subscription["everyWeeks"]>("4");
   const [notes, setNotes] = useState<Subscription["notes"]>("");
+
+  const add = useAddSubscription();
+
+  const onAdd = () => {
+    const id = uuid();
+
+    const subscription: Subscription = {
+      id,
+      name,
+      cost,
+      currency,
+      startDate,
+      everyWeeks,
+      notes
+    };
+
+    add(subscription)
+    Alert.alert(`Subscription ${id} created!`);
+  }
 
   return (
     <View style={styles.container}>
@@ -43,17 +64,8 @@ export default () => {
         }
       }} />
       <TextInput placeholder="Notes" value={notes} onChangeText={setNotes} />
-      <Button title="Add" />
-      <Pressable
-        onPress={() => {
-          console.log("state", {
-            name,
-            cost,
-            currency,
-            notes,
-          });
-        }}
-      >
+      <Button title="Add" onPress={onAdd} />
+      <Pressable onPress={onAdd}>
         <Text>Add</Text>
       </Pressable>
     </View>

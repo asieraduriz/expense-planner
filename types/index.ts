@@ -21,7 +21,7 @@ export type Subscription = {
     id: UUID;
     name: string;
     cost: string;
-    currency: typeof Currencies;
+    currency: CurrencySymbols;
     startDate: Date;
     everyWeeks: string;
     notes: string;

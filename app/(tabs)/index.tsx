@@ -1,11 +1,26 @@
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import { useSubscriptions } from '@/components/contexts';
 
 export default () => {
+  const subscriptions = useSubscriptions();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text>Subscriptions</Text>
+      <ScrollView>
+        {
+          subscriptions.map((subscription) =>
+            <View key={subscription.id}>
+              <Text>{subscription.name}</Text>
+              <Text>{subscription.cost}</Text>
+              <Text>{subscription.currency}</Text>
+              <Text>{subscription.startDate.toLocaleDateString()}</Text>
+              <Text>{subscription.everyWeeks}</Text>
+              <Text>{subscription.notes}</Text>
+            </View>
+          )
+        }
+      </ScrollView>
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext } from "react";
+import { createContext, Dispatch, PropsWithChildren, useContext, useReducer } from "react";
 import { Subscription } from "@/types";
 
 type State = {
@@ -26,15 +26,25 @@ const reducer = (state: State, action: Action): State => {
     }
 };
 
-const Context = createContext<(State & {}) | undefined>(undefined);
+const Context = createContext<(State & { dispatch: Dispatch<Action> }) | undefined>(undefined);
 
 export const Provider = (props: PropsWithChildren) => {
-    return <Context.Provider value={{ subscriptions: [] }}>{props.children}</Context.Provider>;
+    const [{ subscriptions }, dispatch] = useReducer(reducer, { subscriptions: [] });
+
+    return <Context.Provider value={{ subscriptions, dispatch }}>{props.children}</Context.Provider>;
 };
 
-export const useProvider = () => {
+export const useSubscriptions = () => {
     const context = useContext(Context);
-    if (context === undefined) throw new Error("usProvider must be used within Provider");
+    if (context === undefined) throw new Error("useSubscriptions must be used within Provider");
 
-    return context;
+    return context.subscriptions;
+};
+
+export const useAddSubscription = () => {
+    const context = useContext(Context);
+    if (context === undefined) throw new Error("useProvider must be used within Provider");
+
+    const add = (subscription: Subscription) => context.dispatch({ type: 'add', subscription })
+    return add;
 };
