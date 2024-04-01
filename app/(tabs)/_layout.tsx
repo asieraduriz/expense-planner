@@ -27,9 +27,10 @@ export default () => {
         }}
       />
       <Tabs.Screen
-        name="new"
+        name="(subscriptions)"
         options={{
           title: "New",
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="plus-circle" color={color} />,
         }}
       />

@@ -21,8 +21,8 @@ export default () => {
                             <Text>{subscription.everyWeeks}</Text>
                             <Text>{subscription.notes}</Text>
                             <Link href={{
-                                pathname: "/update",
-                                params: { id: subscription.id }
+                                pathname: "/(tabs)/(dashboard)/[subscriptionId]",
+                                params: { subscriptionId: subscription.id }
                             }} >
                                 <FontAwesome size={28} name='pencil-square-o' />
                             </Link>

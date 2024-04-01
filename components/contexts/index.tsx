@@ -92,3 +92,11 @@ export const useRemoveSubscription = () => {
     const remove = (id: Subscription["id"]) => context.dispatch({ type: 'remove', id })
     return remove;
 };
+
+export const useUpdateSubscription = () => {
+    const context = useContext(Context);
+    if (context === undefined) throw new Error("useRemoveSubscription must be used within Provider");
+
+    const update = (id: Subscription["id"], subscription: Subscription) => context.dispatch({ type: 'update', id, subscription })
+    return update;
+}

@@ -12,8 +12,8 @@ export const InitialSubscriptions: Subscription[] = [
     },
     {
         id: "f1cab206-d611-4377-84f4-67e560f4775a",
-        name: "Name 1",
-        cost: "1234",
+        name: "Name 2",
+        cost: "12345",
         currency: "€",
         startDate: new Date("2024-01-01"),
         everyWeeks: "4",
@@ -21,8 +21,8 @@ export const InitialSubscriptions: Subscription[] = [
     },
     {
         id: "f1cab206-d611-4377-84f4-67e560f4775t",
-        name: "Name 1",
-        cost: "1234",
+        name: "Name 3",
+        cost: "111234",
         currency: "€",
         startDate: new Date("2024-01-01"),
         everyWeeks: "4",
@@ -30,8 +30,8 @@ export const InitialSubscriptions: Subscription[] = [
     },
     {
         id: "f1cab206-d611-4377-84f4-67e560f4775h",
-        name: "Name 1",
-        cost: "1234",
+        name: "Name 4",
+        cost: "12345678",
         currency: "€",
         startDate: new Date("2024-01-01"),
         everyWeeks: "4",
@@ -39,7 +39,7 @@ export const InitialSubscriptions: Subscription[] = [
     },
     {
         id: "b1cab206-d611-4377-84f4-67e560f4775c",
-        name: "Name 2",
+        name: "Name 5",
         cost: "2345",
         currency: "€",
         startDate: new Date("2024-02-02"),
@@ -48,7 +48,7 @@ export const InitialSubscriptions: Subscription[] = [
     },
     {
         id: "d1cab206-d611-4377-84f4-67e560f4775c",
-        name: "Name 3",
+        name: "Name 6",
         cost: "43.21",
         currency: "€",
         startDate: new Date("2024-03-03"),
