@@ -6,12 +6,8 @@ import { Currencies, Subscription } from "@/types";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { uuid } from "@/helpers";
 import { useAddSubscription } from "@/components/contexts";
-import { useLocalSearchParams } from "expo-router";
 
 export default () => {
-  const { id } = useLocalSearchParams<{ id?: Subscription["id"] }>();
-  console.log("🚀 ~ params:", id)
-
   const [cost, setCost] = useState<Subscription["cost"]>("");
   const [name, setName] = useState<Subscription["name"]>("");
   const [currency, setCurrency] = useState<Subscription["currency"]>("€");

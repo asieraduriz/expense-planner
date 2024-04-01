@@ -19,9 +19,10 @@ export default () => {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(dashboard)"
         options={{
           title: "Dashboard",
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="bar-chart" color={color} />,
         }}
       />
