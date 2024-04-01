@@ -22,5 +22,7 @@ export type Subscription = {
     name: string;
     cost: string;
     currency: typeof Currencies;
+    startDate: Date;
+    everyWeeks: string;
     notes: string;
 }
