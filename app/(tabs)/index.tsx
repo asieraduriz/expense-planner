@@ -1,9 +1,12 @@
-import { ScrollView, StyleSheet } from 'react-native';
+import { Button, ScrollView, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { useSubscriptions } from '@/components/contexts';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useRemoveSubscription, useSubscriptions } from '@/components/contexts';
+import { Link } from 'expo-router';
 
 export default () => {
   const subscriptions = useSubscriptions();
+  const remove = useRemoveSubscription();
   return (
     <View style={styles.container}>
       <Text>Subscriptions</Text>
@@ -17,6 +20,14 @@ export default () => {
               <Text>{subscription.startDate.toLocaleDateString()}</Text>
               <Text>{subscription.everyWeeks}</Text>
               <Text>{subscription.notes}</Text>
+              <Link href={{
+                pathname: "/(tabs)/new",
+                params: { id: subscription.id }
+              }} >
+                <FontAwesome size={28} name='pencil-square-o' />
+              </Link>
+
+              <Button title='Remove' onPress={() => remove(subscription.id)} />
             </View>
           )
         }
@@ -28,8 +39,6 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
