@@ -1,4 +1,4 @@
-import { Provider } from "@/components/contexts";
+import { SubscriptionsProvider } from "@/components/contexts";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -49,12 +49,12 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Provider>
+      <SubscriptionsProvider>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>
-      </Provider>
+      </SubscriptionsProvider>
     </ThemeProvider>
   );
 }

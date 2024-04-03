@@ -56,7 +56,7 @@ const reducer = (state: State, action: Action): State => {
 
 const Context = createContext<(State & { dispatch: Dispatch<Action> }) | undefined>(undefined);
 
-export const Provider = (props: PropsWithChildren) => {
+export const SubscriptionsProvider = (props: PropsWithChildren) => {
     const [{ subscriptions }, dispatch] = useReducer(reducer, { subscriptions: InitialSubscriptions });
 
     return <Context.Provider value={{ subscriptions, dispatch }}>{props.children}</Context.Provider>;
@@ -64,14 +64,14 @@ export const Provider = (props: PropsWithChildren) => {
 
 export const useSubscriptions = () => {
     const context = useContext(Context);
-    if (context === undefined) throw new Error("useSubscriptions must be used within Provider");
+    if (context === undefined) throw new Error("useSubscriptions must be used within SubscriptionsProvider");
 
     return context.subscriptions;
 };
 
 export const useSubscription = (id: Subscription["id"]) => {
     const context = useContext(Context);
-    if (context === undefined) throw new Error("useSubscription must be used within Provider");
+    if (context === undefined) throw new Error("useSubscription must be used within SubscriptionsProvider");
 
     const subscription = context.subscriptions.find((subscription) => subscription.id === id);
     if (!subscription) throw new Error(`Subscription ${id} not found`);
@@ -80,7 +80,7 @@ export const useSubscription = (id: Subscription["id"]) => {
 
 export const useAddSubscription = () => {
     const context = useContext(Context);
-    if (context === undefined) throw new Error("useAddSubscription must be used within Provider");
+    if (context === undefined) throw new Error("useAddSubscription must be used within SubscriptionsProvider");
 
     const create = (subscription: Subscription) => context.dispatch({ type: 'create', subscription })
     return create;
@@ -88,7 +88,7 @@ export const useAddSubscription = () => {
 
 export const useRemoveSubscription = () => {
     const context = useContext(Context);
-    if (context === undefined) throw new Error("useRemoveSubscription must be used within Provider");
+    if (context === undefined) throw new Error("useRemoveSubscription must be used within SubscriptionsProvider");
 
     const remove = (id: Subscription["id"]) => context.dispatch({ type: 'remove', id })
     return remove;
@@ -96,7 +96,7 @@ export const useRemoveSubscription = () => {
 
 export const useUpdateSubscription = () => {
     const context = useContext(Context);
-    if (context === undefined) throw new Error("useRemoveSubscription must be used within Provider");
+    if (context === undefined) throw new Error("useRemoveSubscription must be used within SubscriptionsProvider");
 
     const update = (id: Subscription["id"], subscription: Subscription) => context.dispatch({ type: 'update', id, subscription })
     return update;
